@@ -1,0 +1,23 @@
+<body id="body">
+
+    <script>
+        var body = document.getElementById('body');
+        var color = 'red';
+        var bg = 'black'
+        for (i=0;i<1000;i++){
+            if (i % 2 == 0){
+                color = 'black';
+                bg = 'red'
+            } else{
+                color = 'red';
+                bg = 'black'
+            }
+
+            var div = document.createElement('div');
+            div.innerHTML = "HAHA".repeat(1000);
+            div.style.color = color;
+            div.style.backgroundColor = bg;
+            body.appendChild(div);
+        }
+    </script>
+</body>
