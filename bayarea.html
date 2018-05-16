@@ -94,7 +94,7 @@
                 <div class="logo-container">
                     <img src="/assets/website-content/logomark-white-large.png" alt="">
                 </div>
-                <h1 class="primaryHeader">Anjunadeep<br>Open Air Bay Area</h1>
+                <h1 class="primaryHeader">Ajunadeep<br>Open Air Bay Area</h1>
                 <hr class="HR1">
                 <h2 class="mainText">A one day summer festival on The Golden Gate Bridge</h2>
                 <hr class="HR2">
@@ -102,26 +102,26 @@
                     <ul>  
                         <li>Nina Kraviz</li>
                         <li>The Black Madonna</li>
+                        <li>Grimes</li>
+                        <li>Kelela</li>
                         <li>Dolores Abernathy</li>
-                        <li>Luttrell</li>
-                        <li>Hoobastank</li>
+                        <li>Yaeji</li>
                         <li>A$AP MOB</li>
-                        <li>deadmau5</li>
                         <li>The Chainsmokers</li>
                     </ul>
                 </h2>
 
-                <div class="dateAndButton">
+                <div id="canvasDiv" class="dateAndButton">
                     <div class="theDates">
                         <h3 class="m0 seasonText">
-                            August 12
+                            August 4
                             <br>
                             On Sale Now
                         </h3>
                     </div>
                     <div class="theButtons">
                         <div class="buttonContainer">                    
-                            <a href="https://anjunadeep.lnk.to/OpenAirLDN" class="mailchimpSubmit button" style="text-decoration: none;">Tickets</a>
+                            <a href="#" id="tickets" class="mailchimpSubmit button" style="text-decoration: none;">Tickets</a>
                             <a href="bayarea2018/info.html" class="mailchimpSubmit button secondaryButton">Info</a>
                         </div>
                     </div>
@@ -189,7 +189,49 @@
 
         <script src="js/main3.js"></script>
         <script>
-                history.replaceState({}, "page 3", "bayarea");
-        </script>
+                //history.replaceState({}, "page 3", "bayarea");
+            var canvas,x,ctx;
+            $('#tickets').click(function(e){
+                this.innerHTML = '';
+                e.preventDefault();
+                canvas = document.createElement('canvas');
+                canvas.id = 'soldout';
+                canvas.height = 500;
+                canvas.width = 500;
+                canvas.x = e.clientX;
+                canvas.y = e.clientY;
+                canvas.style.position = 'absolute';
+                var body = document.getElementById('canvasDiv');
+                body.appendChild(canvas);
+
+                ctx = canvas.getContext('2d');
+
+
+                animate();
+            })
+
+            function animate(){
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.font = "20px Arial";
+                ctx.fillStyle = getRandomColor();
+                console.log(window.innerWidth);
+                if (window.innerWidth < 895){
+                    var y = 95
+                } else{
+                    var y = 35
+                }
+                console.log(y)
+                ctx.fillText("SOLDOUT", 162,y);
+                setTimeout(function(){window.requestAnimationFrame(animate)},100);
+            }
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                  color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+              }
+       </script>
     </body>
 </html>
