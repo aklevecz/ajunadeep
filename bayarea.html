@@ -190,7 +190,7 @@
         <script src="js/main3.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.7/chroma.min.js"></script>
         <script>
-                //history.replaceState({}, "page 3", "bayarea");
+            history.replaceState({}, "page 3", "bayarea");
             var canvas,x=162,ctx;
             $('#tickets').click(function(e){
                 this.innerHTML = '';
@@ -212,14 +212,16 @@
                 animate();
             })
             var switcher = false;
-            var chromaScale = chroma.scale(['#35CFCE','#F83A5D'])
+            var chromaScale = chroma.scale(['white','white','#F83A5D'])
             function animate(){
                 ctx.font = "40px Arial";
                 ctx.fillStyle = chromaScale(Math.random());
                 if (window.innerWidth < 895){
                     var y = 100
+                    var end = 230;
                 } else{
                     var y = 40
+                    var end = 700;
                 }
                 
                 if (switcher==false){
@@ -228,7 +230,7 @@
                     x = x += -3;
                 }
 
-                if (x > 700 && switcher==false){
+                if (x > end && switcher==false){
                     switcher=true;
                     ctx.clearRect(0, 0, canvas.width, canvas.height)
                 }
